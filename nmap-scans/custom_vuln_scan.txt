@@ -1,0 +1,8 @@
+# Nmap 7.95 scan initiated Fri Apr 11 04:53:57 2025 as: "C:\\Program Files (x86)\\Nmap\\nmap.exe" --script=vuln -oN custom_vuln_scan.txt 172.20.10.4 172.20.10.2
+Nmap scan report for 172.20.10.4
+Host is up (0.089s latency).
+All 1000 scanned ports on 172.20.10.4 are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+MAC Address: 56:D4:5A:CC:DB:F7 (Unknown)
+
+# Nmap done at Fri Apr 11 04:55:40 2025 -- 2 IP addresses (1 host up) scanned in 103.56 seconds

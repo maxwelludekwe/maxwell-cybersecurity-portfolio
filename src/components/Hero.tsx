@@ -3,7 +3,7 @@ import { Shield, Lock, Code, Database } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 light:from-gray-50 light:via-gray-100 light:to-gray-50 overflow-hidden transition-colors duration-300">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-20 text-cyan-400/20">
@@ -27,7 +27,7 @@ export const Hero = () => {
           </div>
         </div>
 
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent animate-fade-in">
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 dark:from-white dark:via-cyan-100 dark:to-cyan-400 light:from-gray-900 light:via-cyan-600 light:to-cyan-500 bg-clip-text text-transparent animate-fade-in">
           Maxwell Udekwe
         </h1>
 
@@ -35,7 +35,7 @@ export const Hero = () => {
           Cybersecurity Enthusiast
         </h2>
 
-        <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in delay-1000">
+        <p className="text-lg sm:text-xl text-gray-300 dark:text-gray-300 light:text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in delay-1000">
           Guarding the digital realm with <span className="text-cyan-400 font-semibold">precision</span>, 
           <span className="text-cyan-400 font-semibold"> persistence</span>, and 
           <span className="text-cyan-400 font-semibold"> passion</span>.

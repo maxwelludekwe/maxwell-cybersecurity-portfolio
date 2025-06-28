@@ -1,19 +1,23 @@
 
 import { useState } from "react";
-import { Menu, X, Shield } from "lucide-react";
+import { Menu, X, Shield, Sun, Moon } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Tools", href: "#tools" },
+    { name: "Certificates", href: "#certificates" },
+    { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm border-b border-cyan-500/20 z-50">
+    <nav className="fixed top-0 w-full bg-gray-900/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-cyan-500/20 z-50 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
@@ -22,8 +26,8 @@ export const Navigation = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
+            <div className="flex items-baseline space-x-8">
               {navItems.map((item) => (
                 <a
                   key={item.name}
@@ -35,10 +39,22 @@ export const Navigation = () => {
                 </a>
               ))}
             </div>
+            <button
+              onClick={toggleTheme}
+              className="text-gray-300 hover:text-cyan-400 p-2 transition-colors duration-200"
+            >
+              {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </button>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            <button
+              onClick={toggleTheme}
+              className="text-gray-300 hover:text-cyan-400 p-2"
+            >
+              {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-300 hover:text-cyan-400 p-2"
@@ -51,7 +67,7 @@ export const Navigation = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden bg-gray-800 border-t border-cyan-500/20">
+        <div className="md:hidden bg-gray-800 dark:bg-gray-800 border-t border-cyan-500/20 transition-colors duration-300">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) => (
               <a

@@ -5,44 +5,50 @@ export const Tools = () => {
   const tools = [
     {
       name: "Kali Linux",
-      description: "Penetration testing and digital forensics",
+      description: "Penetration testing and ethical hacking OS.",
+      achievement: "Built a virtual home lab and conducted simulated attacks.",
       icon: Shield,
       category: "Operating System"
     },
     {
       name: "Wireshark",
-      description: "Network protocol analyzer for traffic analysis",
+      description: "Packet analysis and network monitoring.",
+      achievement: "Captured and inspected network traffic to identify unencrypted data and signs of malicious activity.",
       icon: Wifi,
       category: "Network Analysis"
     },
     {
+      name: "Metasploit",
+      description: "Vulnerability exploitation framework.",
+      achievement: "Simulated attacks in a safe lab environment using Metasploitable to learn exploit execution and payload delivery.",
+      icon: Code,
+      category: "Exploitation"
+    },
+    {
       name: "Burp Suite",
-      description: "Web application security testing platform",
+      description: "Web application security testing.",
+      achievement: "Identified XSS and SQLi vulnerabilities in test applications like OWASP Juice Shop.",
       icon: Globe,
       category: "Web Security"
     },
     {
       name: "Nmap",
-      description: "Network discovery and security auditing",
+      description: "Network scanning and reconnaissance.",
+      achievement: "Mapped networks, discovered open ports and services, and created visual scan reports using Zenmap GUI.",
       icon: Database,
       category: "Network Scanning"
     },
     {
-      name: "Metasploit",
-      description: "Penetration testing framework",
+      name: "Python",
+      description: "Scripting and automation in cybersecurity workflows.",
+      achievement: "Wrote scripts for log parsing, brute-force simulations, and automated vulnerability scans in a controlled lab environment.",
       icon: Code,
-      category: "Exploitation"
-    },
-    {
-      name: "OWASP ZAP",
-      description: "Web application vulnerability scanner",
-      icon: Zap,
-      category: "Web Security"
+      category: "Scripting"
     }
   ];
 
   return (
-    <section id="tools" className="py-20 bg-gray-900">
+    <section id="tools" className="py-20 bg-gray-900 dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
@@ -58,7 +64,7 @@ export const Tools = () => {
           {tools.map((tool, index) => (
             <div
               key={tool.name}
-              className="group bg-gray-800 border border-gray-700 rounded-xl p-6 hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 hover:-translate-y-2"
+              className="group bg-gray-800 dark:bg-gray-800 border border-gray-700 rounded-xl p-6 hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 hover:-translate-y-2"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="p-3 bg-cyan-500/10 rounded-lg border border-cyan-500/20 group-hover:bg-cyan-500/20 transition-colors duration-300">
@@ -73,30 +79,15 @@ export const Tools = () => {
                 {tool.name}
               </h3>
 
-              <p className="text-gray-400 leading-relaxed">
-                {tool.description}
+              <p className="text-gray-400 leading-relaxed mb-4">
+                <span className="font-medium">Use:</span> {tool.description}
               </p>
 
-              <div className="mt-4 pt-4 border-t border-gray-700">
-                <div className="flex items-center text-cyan-400 text-sm font-medium">
-                  <span>Learn More</span>
-                  <svg className="ml-2 h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </div>
+              <p className="text-gray-300 leading-relaxed text-sm bg-gray-700/50 p-3 rounded-lg">
+                <span className="font-medium text-cyan-400">Achievement:</span> {tool.achievement}
+              </p>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center space-x-4 p-6 bg-gradient-to-r from-cyan-500/10 to-cyan-600/10 rounded-xl border border-cyan-500/20">
-            <Shield className="h-8 w-8 text-cyan-400" />
-            <div className="text-left">
-              <h3 className="text-white font-semibold">Ready to Secure Your Systems?</h3>
-              <p className="text-gray-400 text-sm">Let's discuss your cybersecurity needs</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>

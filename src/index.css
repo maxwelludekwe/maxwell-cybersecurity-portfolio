@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -37,19 +38,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -98,6 +92,44 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
   }
+}
+
+/* Light mode overrides */
+.light {
+  --background: 255 255 255;
+  --foreground: 0 0 0;
+}
+
+.light .bg-gray-900 {
+  @apply bg-white;
+}
+
+.light .bg-gray-800 {
+  @apply bg-gray-100;
+}
+
+.light .bg-gray-700 {
+  @apply bg-gray-200;
+}
+
+.light .text-white {
+  @apply text-gray-900;
+}
+
+.light .text-gray-300 {
+  @apply text-gray-600;
+}
+
+.light .text-gray-400 {
+  @apply text-gray-500;
+}
+
+.light .border-gray-700 {
+  @apply border-gray-300;
+}
+
+.light .border-gray-600 {
+  @apply border-gray-400;
 }

@@ -34,11 +34,12 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
   useEffect(() => {
     localStorage.setItem('theme', theme);
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    
+    // Remove existing theme classes
+    document.documentElement.classList.remove('dark', 'light');
+    
+    // Add the current theme class
+    document.documentElement.classList.add(theme);
   }, [theme]);
 
   const toggleTheme = () => {

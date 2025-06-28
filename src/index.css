@@ -84,6 +84,11 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
 }
 
 @layer base {
@@ -96,40 +101,68 @@
   }
 }
 
-/* Light mode overrides */
+/* Animation keyframes */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+.delay-1500 {
+  animation-delay: 1.5s;
+}
+
+/* Light mode specific styles */
 .light {
-  --background: 255 255 255;
-  --foreground: 0 0 0;
+  background: #ffffff;
+  color: #111827;
 }
 
 .light .bg-gray-900 {
-  @apply bg-white;
+  background-color: #ffffff !important;
 }
 
 .light .bg-gray-800 {
-  @apply bg-gray-100;
+  background-color: #f3f4f6 !important;
 }
 
 .light .bg-gray-700 {
-  @apply bg-gray-200;
+  background-color: #ffffff !important;
 }
 
 .light .text-white {
-  @apply text-gray-900;
+  color: #111827 !important;
 }
 
 .light .text-gray-300 {
-  @apply text-gray-600;
+  color: #6b7280 !important;
 }
 
 .light .text-gray-400 {
-  @apply text-gray-500;
+  color: #9ca3af !important;
 }
 
 .light .border-gray-700 {
-  @apply border-gray-300;
+  border-color: #e5e7eb !important;
 }
 
 .light .border-gray-600 {
-  @apply border-gray-400;
+  border-color: #d1d5db !important;
 }

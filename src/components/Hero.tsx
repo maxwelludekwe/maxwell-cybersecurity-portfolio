@@ -23,7 +23,11 @@ export const Hero = () => {
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div className="mb-8">
           <div className="inline-flex items-center justify-center p-4 bg-cyan-400/10 rounded-full border border-cyan-400/20 mb-6">
-            <Shield className="h-16 w-16 text-cyan-400" />
+            <img 
+              src="/lovable-uploads/8faa3dfa-7000-4a5f-8882-af01963cc7c4.png" 
+              alt="Maxwell Udekwe" 
+              className="h-16 w-16 rounded-full object-cover"
+            />
           </div>
         </div>
 

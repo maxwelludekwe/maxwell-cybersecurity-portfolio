@@ -23,9 +23,9 @@ export const Certificates = () => {
       name: "CompTIA Security+",
       provider: "CompTIA",
       description: "Validates core cybersecurity skills needed for security roles.",
-      achievement: "Working through security controls, risk management, and incident response.",
-      status: "in-progress",
-      icon: Clock
+      achievement: "Completed March 6, 2025. Mastered security controls, risk management, and incident response.",
+      status: "completed",
+      icon: Award
     }
   ];
 

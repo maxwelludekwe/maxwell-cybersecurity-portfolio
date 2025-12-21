@@ -51,7 +51,7 @@ export const Hero = () => {
           <Button
             variant="outline"
             className="border-2 border-cyan-400 text-cyan-400 dark:text-cyan-400 light:text-cyan-600 hover:bg-cyan-400 hover:text-gray-900 px-8 py-3 rounded-full font-semibold text-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-2"
-            onClick={() => window.open('/resume.pdf', '_blank')}
+            onClick={() => window.open('/Maxwell_Udekwe_Resume.docx', '_blank')}
           >
             <Eye className="h-5 w-5" />
             View Resume
@@ -60,7 +60,7 @@ export const Hero = () => {
           <Button
             variant="outline"
             className="border-2 border-blue-400 text-blue-400 dark:text-blue-400 light:text-blue-600 hover:bg-blue-400 hover:text-gray-900 px-8 py-3 rounded-full font-semibold text-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-2"
-            onClick={() => window.open('/cover-letter.pdf', '_blank')}
+            onClick={() => window.open('/Maxwell_Udekwe_Cover_letter.docx', '_blank')}
           >
             <Eye className="h-5 w-5" />
             Cover Letter

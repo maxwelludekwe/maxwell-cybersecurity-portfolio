@@ -1,5 +1,6 @@
 
-import { Award, CheckCircle, Clock } from "lucide-react";
+import { Award, CheckCircle, Clock, Eye } from "lucide-react";
+import { Button } from "./ui/button";
 
 export const Certificates = () => {
   const certificates = [
@@ -25,7 +26,8 @@ export const Certificates = () => {
       description: "Validates core cybersecurity skills needed for security roles.",
       achievement: "Completed March 6, 2025. Mastered security controls, risk management, and incident response.",
       status: "completed",
-      icon: Award
+      icon: Award,
+      certificateUrl: "/Comptia_cert.jpeg"
     }
   ];
 
@@ -80,6 +82,18 @@ export const Certificates = () => {
               <p className="text-gray-300 leading-relaxed text-sm bg-gray-600/50 p-3 rounded-lg">
                 <span className="font-medium text-cyan-400">Achievement:</span> {cert.achievement}
               </p>
+
+              {cert.certificateUrl && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="mt-4 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300"
+                  onClick={() => window.open(cert.certificateUrl, '_blank')}
+                >
+                  <Eye className="h-4 w-4 mr-2" />
+                  View Certificate
+                </Button>
+              )}
             </div>
           ))}
         </div>

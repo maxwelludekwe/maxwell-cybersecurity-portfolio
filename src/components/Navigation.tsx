@@ -1,9 +1,11 @@
-
 import { useState } from "react";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Menu, X, Sun, Moon, Shield } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
+import { useAuth } from "@/contexts/AuthContext";
 
 export const Navigation = () => {
+  const { user, isAdmin } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
@@ -43,6 +45,15 @@ export const Navigation = () => {
                 </a>
               ))}
             </div>
+            {isAdmin && (
+              <Link
+                to="/admin"
+                className="text-cyan-400 hover:text-cyan-300 px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center gap-1"
+              >
+                <Shield className="h-4 w-4" />
+                Admin
+              </Link>
+            )}
             <button
               onClick={toggleTheme}
               className="text-gray-300 dark:text-gray-300 light:text-gray-600 hover:text-cyan-400 p-2 transition-colors duration-200"

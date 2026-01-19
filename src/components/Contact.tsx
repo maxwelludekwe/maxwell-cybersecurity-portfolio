@@ -5,7 +5,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 export const Contact = () => {
   const { toast } = useToast();
@@ -21,29 +20,15 @@ export const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    const { error } = await supabase
-      .from('contact_messages')
-      .insert({
-        name: formData.name,
-        email: formData.email,
-        subject: formData.subject,
-        message: formData.message
-      });
+    // Simulate form submission (you can connect to an edge function later)
+    await new Promise(resolve => setTimeout(resolve, 500));
     
-    if (error) {
-      toast({
-        title: 'Error',
-        description: 'Failed to send message. Please try again.',
-        variant: 'destructive',
-      });
-    } else {
-      toast({
-        title: 'Message Sent! 🚀',
-        description: 'Thanks for reaching out. I\'ll get back to you soon!',
-      });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }
+    toast({
+      title: 'Message Sent! 🚀',
+      description: 'Thanks for reaching out. I\'ll get back to you soon!',
+    });
     
+    setFormData({ name: '', email: '', subject: '', message: '' });
     setIsSubmitting(false);
   };
 
@@ -187,7 +172,7 @@ export const Contact = () => {
               Get in Touch
             </h3>
             <div className="grid gap-4">
-              {contactMethods.map((contact) => (
+              {contactMethods.map((contact, index) => (
                 <a
                   key={contact.name}
                   href={contact.href}

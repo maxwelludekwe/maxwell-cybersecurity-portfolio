@@ -25,10 +25,18 @@ const Auth = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    if (user && isAdmin) {
-      navigate('/admin');
+    if (user) {
+      if (isAdmin) {
+        navigate('/admin');
+      } else {
+        toast({
+          title: 'Access Denied',
+          description: 'You do not have admin privileges to access the dashboard.',
+          variant: 'destructive',
+        });
+      }
     }
-  }, [user, isAdmin, navigate]);
+  }, [user, isAdmin, navigate, toast]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

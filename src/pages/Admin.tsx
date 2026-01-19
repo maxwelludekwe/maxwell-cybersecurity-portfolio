@@ -3,22 +3,39 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { LogOut, Shield, Award, Briefcase, FileText, Settings } from 'lucide-react';
+import { LogOut, Shield, Award, Briefcase, FileText, Settings, MessageSquare } from 'lucide-react';
 import { CertificatesAdmin } from '@/components/admin/CertificatesAdmin';
 import { ProjectsAdmin } from '@/components/admin/ProjectsAdmin';
 import { DocumentsAdmin } from '@/components/admin/DocumentsAdmin';
 import { SiteSettingsAdmin } from '@/components/admin/SiteSettingsAdmin';
+import { ContactMessagesAdmin } from '@/components/admin/ContactMessagesAdmin';
+import { supabase } from '@/integrations/supabase/client';
 
 const Admin = () => {
   const { user, isAdmin, loading, signOut } = useAuth();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('certificates');
+  const [unreadCount, setUnreadCount] = useState(0);
 
   useEffect(() => {
     if (!loading && (!user || !isAdmin)) {
       navigate('/auth');
     }
   }, [user, isAdmin, loading, navigate]);
+
+  useEffect(() => {
+    const fetchUnreadCount = async () => {
+      if (isAdmin) {
+        const { count } = await supabase
+          .from('contact_messages')
+          .select('*', { count: 'exact', head: true })
+          .eq('read', false);
+        setUnreadCount(count || 0);
+      }
+    };
+
+    fetchUnreadCount();
+  }, [isAdmin, activeTab]);
 
   const handleSignOut = async () => {
     await signOut();
@@ -100,6 +117,18 @@ const Admin = () => {
                 Documents
               </TabsTrigger>
               <TabsTrigger 
+                value="messages"
+                className="data-[state=active]:bg-cyan-500 data-[state=active]:text-white text-gray-400 relative"
+              >
+                <MessageSquare className="h-4 w-4 mr-2" />
+                Messages
+                {unreadCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {unreadCount}
+                  </span>
+                )}
+              </TabsTrigger>
+              <TabsTrigger 
                 value="settings"
                 className="data-[state=active]:bg-cyan-500 data-[state=active]:text-white text-gray-400"
               >
@@ -116,6 +145,9 @@ const Admin = () => {
             </TabsContent>
             <TabsContent value="documents">
               <DocumentsAdmin />
+            </TabsContent>
+            <TabsContent value="messages">
+              <ContactMessagesAdmin />
             </TabsContent>
             <TabsContent value="settings">
               <SiteSettingsAdmin />

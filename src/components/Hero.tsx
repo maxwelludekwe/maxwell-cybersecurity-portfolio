@@ -1,8 +1,40 @@
-
-import { Shield, Download, Eye } from "lucide-react";
+import { Shield, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+
+interface Document {
+  id: string;
+  name: string;
+  type: string;
+  file_url: string;
+}
 
 export const Hero = () => {
+  const [documents, setDocuments] = useState<Document[]>([]);
+
+  useEffect(() => {
+    const fetchDocuments = async () => {
+      const { data } = await supabase
+        .from('documents')
+        .select('*')
+        .in('type', ['resume', 'cover_letter']);
+      
+      if (data) {
+        setDocuments(data);
+      }
+    };
+
+    fetchDocuments();
+  }, []);
+
+  const resume = documents.find(d => d.type === 'resume');
+  const coverLetter = documents.find(d => d.type === 'cover_letter');
+
+  // Fallback URLs if no database entries exist
+  const resumeUrl = resume?.file_url || '/Maxwell_Udekwe_Resume.docx';
+  const coverLetterUrl = coverLetter?.file_url || '/Maxwell_Udekwe_Cover_letter.docx';
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 light:from-gray-50 light:via-white light:to-gray-100 relative overflow-hidden">
       {/* Background animation */}
@@ -51,7 +83,7 @@ export const Hero = () => {
           <Button
             variant="outline"
             className="border-2 border-cyan-400 text-cyan-400 dark:text-cyan-400 light:text-cyan-600 hover:bg-cyan-400 hover:text-gray-900 px-8 py-3 rounded-full font-semibold text-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-2"
-            onClick={() => window.open('/Maxwell_Udekwe_Resume.docx', '_blank')}
+            onClick={() => window.open(resumeUrl, '_blank')}
           >
             <Eye className="h-5 w-5" />
             View Resume
@@ -60,7 +92,7 @@ export const Hero = () => {
           <Button
             variant="outline"
             className="border-2 border-blue-400 text-blue-400 dark:text-blue-400 light:text-blue-600 hover:bg-blue-400 hover:text-gray-900 px-8 py-3 rounded-full font-semibold text-lg transition-all duration-300 hover:-translate-y-1 flex items-center gap-2"
-            onClick={() => window.open('/Maxwell_Udekwe_Cover_letter.docx', '_blank')}
+            onClick={() => window.open(coverLetterUrl, '_blank')}
           >
             <Eye className="h-5 w-5" />
             Cover Letter

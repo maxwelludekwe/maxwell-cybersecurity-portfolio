@@ -1,4 +1,4 @@
-import { Database, Globe, Users, Wifi, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -14,11 +14,27 @@ interface Project {
   status: string;
 }
 
-const iconMap: Record<number, React.ElementType> = {
-  0: Database,
-  1: Globe,
-  2: Users,
-  3: Wifi,
+// Map tool names to their official icon URLs
+const toolIconMap: Record<string, string> = {
+  "python": "https://www.python.org/static/community_logos/python-logo-generic.svg",
+  "nmap": "https://nmap.org/images/sitelogo-nmap-colourful.svg",
+  "metasploit": "https://www.metasploit.com/includes/images/metasploit-r7-logo.svg",
+  "wireshark": "https://www.wireshark.org/assets/icons/wireshark-fin@2x.png",
+  "burp": "https://portswigger.net/content/images/logos/portswigger-logo.svg",
+  "burp suite": "https://portswigger.net/content/images/logos/portswigger-logo.svg",
+  "kali": "https://www.kali.org/images/kali-dragon-icon.svg",
+  "owasp": "https://owasp.org/assets/images/logo.png",
+};
+
+const getProjectIcon = (tools: string): string => {
+  const toolsLower = tools.toLowerCase();
+  for (const [key, url] of Object.entries(toolIconMap)) {
+    if (toolsLower.includes(key)) {
+      return url;
+    }
+  }
+  // Default to Python icon
+  return toolIconMap["python"];
 };
 
 const defaultProjects = [
@@ -114,8 +130,8 @@ export const Projects = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => {
-            const IconComponent = iconMap[index % 4];
+          {projects.map((project) => {
+            const projectIconUrl = getProjectIcon(project.tools);
             return (
               <div
                 key={project.id}
@@ -145,8 +161,12 @@ export const Projects = () => {
                     </span>
                   </div>
                   <div className="absolute bottom-4 left-4">
-                    <div className="p-3 bg-cyan-500/20 rounded-lg border border-cyan-500/30">
-                      <IconComponent className="h-8 w-8 text-cyan-400" />
+                    <div className="p-3 bg-white/90 rounded-lg border border-cyan-500/30">
+                      <img 
+                        src={projectIconUrl} 
+                        alt="Tool icon"
+                        className="h-8 w-8 object-contain"
+                      />
                     </div>
                   </div>
                 </div>

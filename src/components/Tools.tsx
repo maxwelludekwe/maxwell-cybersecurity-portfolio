@@ -1,13 +1,10 @@
-
-import { Shield, Code, Database, Globe, Wifi, Terminal } from "lucide-react";
-
 export const Tools = () => {
   const tools = [
     {
       name: "Kali Linux",
       description: "Penetration testing and ethical hacking OS.",
       achievement: "Built a virtual home lab and conducted simulated attacks.",
-      icon: Terminal,  // Using Terminal as OS icon
+      iconUrl: "https://www.kali.org/images/kali-dragon-icon.svg",
       category: "Operating System",
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop"
     },
@@ -15,7 +12,7 @@ export const Tools = () => {
       name: "Wireshark",
       description: "Packet analysis and network monitoring.",
       achievement: "Captured and inspected network traffic to identify unencrypted data and signs of malicious activity.",
-      icon: Wifi,
+      iconUrl: "https://www.wireshark.org/assets/icons/wireshark-fin@2x.png",
       category: "Network Analysis",
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop"
     },
@@ -23,7 +20,7 @@ export const Tools = () => {
       name: "Metasploit",
       description: "Vulnerability exploitation framework.",
       achievement: "Simulated attacks in a safe lab environment using Metasploitable to learn exploit execution and payload delivery.",
-      icon: Code,
+      iconUrl: "https://www.metasploit.com/includes/images/metasploit-r7-logo.svg",
       category: "Exploitation",
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop"
     },
@@ -31,7 +28,7 @@ export const Tools = () => {
       name: "Burp Suite",
       description: "Web application security testing.",
       achievement: "Identified XSS and SQLi vulnerabilities in test applications like OWASP Juice Shop.",
-      icon: Globe,
+      iconUrl: "https://portswigger.net/content/images/logos/portswigger-logo.svg",
       category: "Web Security",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop"
     },
@@ -39,7 +36,7 @@ export const Tools = () => {
       name: "Nmap",
       description: "Network scanning and reconnaissance.",
       achievement: "Mapped networks, discovered open ports and services, and created visual scan reports using Zenmap GUI.",
-      icon: Database,
+      iconUrl: "https://nmap.org/images/sitelogo-nmap-colourful.svg",
       category: "Network Scanning",
       image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=400&h=300&fit=crop"
     },
@@ -47,7 +44,7 @@ export const Tools = () => {
       name: "Python",
       description: "Scripting and automation in cybersecurity workflows.",
       achievement: "Wrote scripts for log parsing, brute-force simulations, and automated vulnerability scans in a controlled lab environment.",
-      icon: Code,
+      iconUrl: "https://www.python.org/static/community_logos/python-logo-generic.svg",
       category: "Scripting",
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop"
     }
@@ -81,8 +78,12 @@ export const Tools = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="flex items-center justify-between mb-2">
-                    <div className="p-2 bg-cyan-500/20 rounded-lg border border-cyan-500/30">
-                      <tool.icon className="h-6 w-6 text-cyan-400" />
+                    <div className="p-2 bg-white/90 rounded-lg border border-cyan-500/30">
+                      <img 
+                        src={tool.iconUrl} 
+                        alt={`${tool.name} icon`}
+                        className="h-6 w-6 object-contain"
+                      />
                     </div>
                     <span className="text-xs font-medium text-cyan-400 bg-cyan-400/10 px-2 py-1 rounded-full">
                       {tool.category}

@@ -25,15 +25,6 @@ const defaultCertificates = [
   },
   {
     id: "default-2",
-    name: "Alison Cybersecurity Fundamentals",
-    issuer: "Alison",
-    description: "Foundational understanding of security principles and cyber hygiene.",
-    achievement: "Completed modules on data protection, social engineering, and endpoint defense.",
-    status: "completed",
-    certificate_url: null
-  },
-  {
-    id: "default-3",
     name: "Toolkit for Cybersecurity Professionals: Cybersecurity Fundamentals",
     issuer: "Alison",
     description: "Comprehensive toolkit covering cybersecurity fundamentals for professionals.",

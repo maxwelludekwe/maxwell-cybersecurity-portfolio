@@ -34,12 +34,12 @@ const defaultCertificates = [
   },
   {
     id: "default-3",
-    name: "CompTIA Security+",
-    issuer: "CompTIA",
-    description: "Validates core cybersecurity skills needed for security roles.",
-    achievement: "Completed March 6, 2025. Mastered security controls, risk management, and incident response.",
+    name: "Toolkit for Cybersecurity Professionals: Cybersecurity Fundamentals",
+    issuer: "Alison",
+    description: "Comprehensive toolkit covering cybersecurity fundamentals for professionals.",
+    achievement: "Completed the full course and graduated as part of Alison's 15 million+ community.",
     status: "completed",
-    certificate_url: "/Comptia_cert.jpeg"
+    certificate_url: "/alison_cert.jpg"
   }
 ];
 
